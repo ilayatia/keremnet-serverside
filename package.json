@@ -17,5 +17,8 @@
     "url": "https://github.com/ilayatia/keremnet-serverside/issues"
   },
   "homepage": "https://github.com/ilayatia/keremnet-serverside#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
