@@ -1,8 +1,12 @@
+import { NextFunction, Request, Response } from "express";
 import { getAllPosts, getPostById, postComment } from "./services";
 
 const express = require("express");
 const app = express();
+var cors = require('cors')
 const port: number = 8080;
+
+app.use(cors())
 
 app.use(express.json());
 

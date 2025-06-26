@@ -15,7 +15,7 @@ export const getPostById = (req: Request, res: Response): void => {
 };
 
 export const getAllPosts = (req: Request, res: Response): void => {
-  res.json(posts);
+  res.json(posts)
 };
 
 export const postComment = (req: Request, res: Response): void => {

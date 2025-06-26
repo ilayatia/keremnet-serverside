@@ -1,7 +1,5 @@
 import { CommentModel } from "./Models/Comment";
-import { PostModel } from "./Models/Post";
 
-const { response } = require("express");
 
 const getPosts = async (url: string) => {
   const response = await fetch(url);
