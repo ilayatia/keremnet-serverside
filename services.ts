@@ -1,9 +1,3 @@
-const express = require("express");
-const app = express();
-const port = 8080;
-
-app.use(express.json());
-
 const posts = {
   posts: [
     {
@@ -61,7 +55,7 @@ const posts = {
   ],
 };
 
-app.get("/api/post/:id", (req, res) => {
+const getPostById = (req, res) => {
   const id = req.params.id;
   const post = posts.posts.find((post) => post.id == id);
   if (post === undefined) {
@@ -69,13 +63,12 @@ app.get("/api/post/:id", (req, res) => {
   } else {
     res.json(post);
   }
-});
+}
 
-app.get("/api/posts", (req, res) => {
-  res.json(posts.posts);
-});
+const getAllPosts =(req, res) => {
+  res.json(posts.posts);}
 
-app.post("/api/comment/:id", (req, res) => {
+const postComment =(req, res) => {
   const id = req.params.id;
   const text = req.body.text;
   const name = req.body.name;
@@ -97,8 +90,4 @@ app.post("/api/comment/:id", (req, res) => {
     }
     res.status(404).send({ message: "Id not valid." });
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+}
