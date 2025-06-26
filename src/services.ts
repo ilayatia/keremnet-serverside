@@ -31,13 +31,13 @@ export const postComment = (req: Request, res: Response): void => {
   ) {
     res.status(400).send({ message: "Bad request error" });
   } else {
-    for (let i = 0; i < posts.length; i++) {
-      if (posts[i].id == id) {
-        posts[i].comments.push({ name: name, text: text });
-        res.status(200).send(posts[i]);
+    posts.forEach((post)=>{
+      if (post.id == id){
+        post.comments.push({ name: name, text: text });
+        res.status(200).send(post);
         return;
       }
-    }
+    })
     res.status(404).send({ message: "Id not valid." });
   }
 };
