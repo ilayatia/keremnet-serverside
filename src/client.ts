@@ -19,4 +19,3 @@ const postComment = async (url: string, data: CommentModel) => {
   const json =await response.json();
   return json;
 };
-getPosts("http://localhost:8080/api/posts").then(response=>console.log(response))
