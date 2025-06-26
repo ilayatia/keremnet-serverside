@@ -10,12 +10,12 @@ export const getPostById = (req: Request, res: Response): void => {
   if (post === undefined) {
     res.status(404).send({ message: "Post not found." });
   } else {
-    res.json([post]);
+    res.status(200).json([post]);
   }
 };
 
 export const getAllPosts = (req: Request, res: Response): void => {
-  res.json(posts)
+  res.status(200).json(posts)
 };
 
 export const postComment = (req: Request, res: Response): void => {
