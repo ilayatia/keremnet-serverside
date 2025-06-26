@@ -10,7 +10,7 @@ export const getPostById = (req: Request, res: Response): void => {
   if (post === undefined) {
     res.status(404).send({ message: "Post not found." });
   } else {
-    res.json(post);
+    res.json([post]);
   }
 };
 
