@@ -3,7 +3,7 @@ import { PostModel } from "./Models/Post";
 import {data} from './data'
 
 
-const posts:PostModel[] = data.posts
+const posts:PostModel[] = data
 
 export const getPostById = (req:Request, res:Response):void => {
   const id:number = parseInt(req.params.id)

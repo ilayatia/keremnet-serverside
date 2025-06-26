@@ -1,5 +1,6 @@
-export const data = {
-  "posts": [
+import { PostModel } from "./Models/Post";
+
+export const data:PostModel[] = [
     {
       "id": 1,
       "name": "Ilay",
@@ -53,4 +54,3 @@ export const data = {
       ]
     }
   ]
-}
