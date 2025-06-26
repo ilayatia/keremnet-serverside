@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 8080;
 
+app.use(express.json());
+
 const posts = {
   posts: [
     {
@@ -58,25 +60,44 @@ const posts = {
     },
   ],
 };
-const photos = {
-  photos: ["zebra.jpg", "keremnet.png"],
-};
-app.get("/api/photos", (req, res) => {
-  res.json(photos.photos);
-});
+
 app.get("/api/post/:id", (req, res) => {
   const id = req.params.id;
-  const post = posts.posts.find((post) => post.id == id)
-  if (post === undefined){
-    res.status(404).send("post not found")
-  }
-  else{
+  const post = posts.posts.find((post) => post.id == id);
+  if (post === undefined) {
+    res.status(404).send({message:"Post not found."});
+  } else {
     res.json(post);
   }
 });
-app.get('/api/posts',(req,res) =>{
-  res.json(posts)
-})
+
+app.get("/api/posts", (req, res) => {
+  res.json(posts.posts);
+});
+
+app.post("/api/comment/:id", (req, res) => {
+  const id = req.params.id;
+  const text = req.body.text;
+  const name = req.body.name;
+
+  if (
+    text === null ||
+    name === null ||
+    typeof text !== "string" ||
+    typeof name !== "string"
+  ) {
+    res.status(400).send({ message: "Bad request error" });
+  } else {
+    for (let i = 0; i < posts.posts.length; i++) {
+      if (posts.posts[i].id == id) {
+        posts.posts[i].comments.push({ name: name, text: text });
+        res.status(200).send({ message: "Success" });
+        return;
+      }
+    }
+    res.status(404).send({ message: "Id not valid." });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
