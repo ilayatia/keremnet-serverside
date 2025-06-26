@@ -1,0 +1,31 @@
+{
+  "name": "keremnet-serverside",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/controllers.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilayatia/keremnet-serverside.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilayatia/keremnet-serverside/issues"
+  },
+  "homepage": "https://github.com/ilayatia/keremnet-serverside#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.4",
+    "express": "^5.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
