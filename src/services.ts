@@ -34,7 +34,7 @@ export const postComment = (req: Request, res: Response): void => {
     for (let i = 0; i < posts.length; i++) {
       if (posts[i].id == id) {
         posts[i].comments.push({ name: name, text: text });
-        res.status(200).send({ message: "Success" });
+        res.status(200).send({ name: name, text: text });
         return;
       }
     }

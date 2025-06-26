@@ -4,7 +4,7 @@ fetch("http://localhost:8080/api/posts")
   .then((response) => response.json())
   .then((json) => console.log(json));
 
-fetch("http://localhost:8080/api/comment/10", {
+fetch("http://localhost:8080/api/comment/1", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
