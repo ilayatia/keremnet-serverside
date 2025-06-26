@@ -1,4 +1,4 @@
-export interface CommentModel{
-    name:string,
-    text:string
+export interface CommentModel {
+  name: string;
+  text: string;
 }
