@@ -7,7 +7,10 @@ var cors = require('cors')
 const port: number = 8080;
 
 app.use(cors())
-
+// app.use ((req:Request,res:Response,next:NextFunction)=>{
+//   const username = req.body.username
+//   const password = req.body.password
+// })
 app.use(express.json());
 
 app.get("/api/post/:id", getPostById);
