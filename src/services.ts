@@ -57,7 +57,10 @@ export const addPost =
       likes === null ||
       date === null ||
       typeof likes !== "number" ||
-      typeof date !== "string"
+      typeof date !== "string" ||
+       date.trim() === "" || 
+       text.trim() === "" || 
+       name.trim() === ""
     )
       res.status(400).send({ message: "Bad request error" });
     else {
