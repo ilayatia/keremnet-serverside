@@ -15,7 +15,7 @@ export const getPostById = (req: Request, res: Response): void => {
 };
 
 export const getAllPosts = (req: Request, res: Response): void => {
-  res.status(200).json(posts)
+  res.status(200).json(posts);
 };
 
 export const postComment = (req: Request, res: Response): void => {
@@ -31,13 +31,41 @@ export const postComment = (req: Request, res: Response): void => {
   ) {
     res.status(400).send({ message: "Bad request error" });
   } else {
-    posts.forEach((post)=>{
-      if (post.id == id){
+    posts.forEach((post) => {
+      if (post.id == id) {
         post.comments.push({ name: name, text: text });
         res.status(200).send(post);
         return;
       }
-    })
+    });
     res.status(404).send({ message: "Id not valid." });
   }
 };
+
+export const addPost =
+  (req: Request, res: Response): void => {
+    const date:string = req.body.date;
+    const likes:number = parseInt(req.body.likes)
+    const name:string =req.body.name
+    const text:string =req.body.text
+
+    if (
+      text === null ||
+      name === null ||
+      typeof text !== "string" ||
+      typeof name !== "string" ||
+      likes === null ||
+      date === null ||
+      typeof likes !== "number" ||
+      typeof date !== "string" ||
+       date.trim() === "" || 
+       text.trim() === "" || 
+       name.trim() === ""
+    )
+      res.status(400).send({ message: "Bad request error" });
+    else {
+      posts.push({ name: name, text: text ,comments:[],date:date,id:posts.length+1,likes:likes });
+      res.status(200).send({ msg: "Success" });
+      return;
+    }
+  };
